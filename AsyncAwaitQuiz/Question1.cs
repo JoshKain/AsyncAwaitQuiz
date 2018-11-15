@@ -4,6 +4,21 @@ namespace AsyncAwaitQuiz
 {
     public static class Question1
     {
+        /*
+            What will be the output of the Run method? 
+
+            A). Test 1
+                Test 2
+                Test 3
+
+            B). Test 3
+                Test 2
+                Test 1
+
+            C). Your computer explodes violently, killing you and anyone else around you.
+            
+            D). None of the above. 
+        */
         public static void Run()
         {
             Operation1();

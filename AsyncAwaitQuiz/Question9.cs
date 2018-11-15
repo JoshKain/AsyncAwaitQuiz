@@ -7,6 +7,30 @@ namespace AsyncAwaitQuiz
 {
     public static class Question9
     {
+        /*
+           What will be the output of the Run method? 
+
+           A). Test 1
+               Test 1.5
+
+           B). Test 1
+               Test 1.5
+               Test 2
+
+           C). Test 1
+               Test 1.5
+               Test 2
+               Test 3
+
+           D). Test 1
+               Test 1.5
+               Test 2
+               Test 2.5
+               Test 3
+
+           E). None of the above.
+       */
+
         public static async void Run()
         {
             await Operation1Async();

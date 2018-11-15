@@ -1,12 +1,28 @@
 ﻿using System;
 using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace AsyncAwaitQuiz
 {
     public static class Question3
     {
+        /*
+            What will be the output of the Run method? 
+
+            A). Test 1
+                Test 2
+                Test 2.5
+                Test 3
+
+            B). Test 1
+                Test 2
+
+            C). Test 1
+                Test 2
+                Test 3
+            
+            D). None of the above. 
+        */
+
         public static void Run()
         {
             Operation1();
