@@ -8,7 +8,8 @@ namespace AsyncAwaitQuiz
     public static class Question10
     {
         /*
-           What will be the output of the Run method? 
+           What will be the output of the RunAsync method? 
+           NOTE: You can assume the task returned by this method is awaited by the calling method.
 
            A). Test 1
                Test 1.5

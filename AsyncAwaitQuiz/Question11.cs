@@ -7,6 +7,35 @@ namespace AsyncAwaitQuiz
 {
     public static class Question11
     {
+        /*
+           What will be the output of the RunAsync method? 
+           NOTE: You can assume the task returned by this method is awaited by the calling method.
+
+           A). Test 3
+               Test 2
+               Test 1
+               Test 1.5
+
+           B). Test 3
+               Test 1
+               Test 1.5
+               Test 2
+
+           C). Test 1
+               Test 1.5
+               Test 2
+               Test 3
+               Test 2.5
+
+           D). Test 1
+               Test 1.5
+               Test 2
+               Test 2.5
+               Test 3
+
+           E). None of the above.
+       */
+
         public static async Task RunAsync()
         {
             Task operation1Task = Operation1Async();

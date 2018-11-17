@@ -22,7 +22,7 @@ namespace Tests
             "await" means that execution of the method is paused whilst the network I/O is taking place.
             As "await" is non-blocking, the thread will continue to execute the calling method (RunAsync). 
             Operation2Async returns an incomplete task to RunAsync and allows the thread to continue execution until Operation2 is complete.
-            "await" allows the thread to continue execution in the calling method (the unit test) until Run is complete. RunAsync returns a task and then the unit test is awaiting it.
+            "await" allows the thread to continue execution in the calling method (the unit test) until RunAsync is complete. RunAsync returns a task and then the unit test is awaiting it.
             Execution therefore waits for the HTTP request to complete. 
             Once the HTTP request is complete, execution in Operation2Async continues, so "Test 2.5" is written to the console and control is passed back to RunAsync and execution continues.
             Operation3 is then finally invoked, writing "Test 3" to the console. 

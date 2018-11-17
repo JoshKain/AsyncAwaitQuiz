@@ -36,7 +36,7 @@ namespace AsyncAwaitQuiz
         {
             Console.WriteLine("Test 1");
             HttpClient httpClient = new HttpClient();
-            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(new Uri("https://www.bbc.com"));
+            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(new Uri("http://www.deelay.me/5000/https://www.bbc.com"));
             Console.WriteLine("Test 1.5");
         }
 
@@ -44,7 +44,7 @@ namespace AsyncAwaitQuiz
         {
             Console.WriteLine("Test 2");
             HttpClient httpClient = new HttpClient();
-            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(new Uri("https://www.google.com"));
+            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(new Uri("http://www.deelay.me/5000/https://www.bbc.com"));
             Console.WriteLine("Test 2.5");
         }
 
@@ -52,7 +52,7 @@ namespace AsyncAwaitQuiz
         {
             Console.WriteLine("Test 3");
             HttpClient httpClient = new HttpClient();
-            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(new Uri("https://www.facebook.com"));
+            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(new Uri("http://www.deelay.me/5000/https://www.bbc.com"));
             Console.WriteLine("Test 3.5");
         }
     }
