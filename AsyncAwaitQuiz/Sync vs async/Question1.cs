@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Net.Http;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace AsyncAwaitQuiz
+namespace AsyncAwaitQuiz.Sync_vs_async
 {
-    public static class Question8
+    public static class Question1
     {
         /*
             What will be the output of the Run method? 
@@ -16,22 +14,19 @@ namespace AsyncAwaitQuiz
 
             B). Test 1
                 Test 2
-
-            C). Test 1
-                Test 3
-            
-            D). Test 1
-                Test 2
                 Test 2.5
                 Test 3
 
-            E). None of the above.
+            C). Test 1
+                Test 2
+            
+            D). None of the above. 
         */
 
-        public static async void Run()
+        public static void Run()
         {
             Operation1();
-            await Operation2Async();
+            Operation2();
             Operation3();
         }
 
@@ -40,11 +35,10 @@ namespace AsyncAwaitQuiz
             Console.WriteLine("Test 1");
         }
 
-        private static async Task Operation2Async()
+        private static void Operation2()
         {
             Console.WriteLine("Test 2");
-            HttpClient httpClient = new HttpClient();
-            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(new Uri("https://www.google.com"));
+            Thread.Sleep(5000);
             Console.WriteLine("Test 2.5");
         }
 

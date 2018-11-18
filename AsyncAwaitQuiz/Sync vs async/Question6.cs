@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace AsyncAwaitQuiz
+namespace AsyncAwaitQuiz.Sync_vs_async
 {
-    public static class Question7
+    public static class Question6
     {
         /*
             What will be the output of the Run method? 
@@ -28,10 +27,10 @@ namespace AsyncAwaitQuiz
             E). None of the above.
         */
 
-        public static void Run()
+        public static async void Run()
         {
             Operation1();
-            Operation2Async().Wait();
+            await Operation2Async();
             Operation3();
         }
 

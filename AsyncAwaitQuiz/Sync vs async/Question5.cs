@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Net.Http;
-using System.Threading;
+using System.Threading.Tasks;
 
-namespace AsyncAwaitQuiz
+namespace AsyncAwaitQuiz.Sync_vs_async
 {
     public static class Question5
     {
@@ -30,10 +30,8 @@ namespace AsyncAwaitQuiz
         public static void Run()
         {
             Operation1();
-            Thread.Sleep(5000);
-            Operation2();
+            Operation2Async().Wait();
             Operation3();
-            Thread.Sleep(5000);
         }
 
         private static void Operation1()
@@ -41,7 +39,7 @@ namespace AsyncAwaitQuiz
             Console.WriteLine("Test 1");
         }
 
-        private static async void Operation2()
+        private static async Task Operation2Async()
         {
             Console.WriteLine("Test 2");
             HttpClient httpClient = new HttpClient();

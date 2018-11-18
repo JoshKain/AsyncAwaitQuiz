@@ -1,9 +1,9 @@
-using AsyncAwaitQuiz;
+using AsyncAwaitQuiz.Sync_vs_async;
 using NUnit.Framework;
 
-namespace Tests
+namespace Tests.Sync_vs_async
 {
-    public class Question5Tests
+    public class Question4Tests
     {
         /*
             The answer is E (None of the above)
@@ -26,7 +26,7 @@ namespace Tests
         [Test]
         public void Run()
         {
-            Question5.Run();
+            Question4.Run();
         }
     }
 }
