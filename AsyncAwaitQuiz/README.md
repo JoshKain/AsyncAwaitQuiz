@@ -76,3 +76,27 @@ Async void methods have different error-handling semantics. When an exception is
 It's perfectly fine to have an  **async void**  method (such as an event handler) so long as you look after exceptions within that method.
 
 Best to use **async void** at the top of your codebase (i.e. event handler). 
+
+### Unobserved Exceptions
+
+In the .NET Framework 4, by default, if a `Task` that has an unobserved exception is garbage collected, the finalizer throws an exception and terminates the process. The termination of the process is determined by the timing of garbage collection and finalization. To make it easier for developers to write asynchronous code based on tasks, the .NET Framework 4.5 changes this default behavior for unobserved exceptions. Unobserved exceptions still cause the `UnobservedTaskException` event to be raised, but by default, the process does not terminate. Instead, the exception is ignored after the event is raised, regardless of whether an event handler observes the exception.
+
+## Multithreading
+
+### Task.Factory.StartNew vs Task.Run
+
+As it is stated  [here](http://blogs.msdn.com/b/pfxteam/archive/2011/10/24/10229468.aspx):
+
+> So, in the .NET Framework 4.5 Developer Preview, we’ve introduced the new Task.Run method.**This in no way obsoletes**  Task.Factory.StartNew,  **but rather should simply be thought of as a quick way to use**  Task.Factory.StartNew  **without needing to specify a bunch of parameters. It’s a shortcut.**  In fact, Task.Run is actually implemented in terms of the same logic used for Task.Factory.StartNew, just passing in some default parameters. When you pass an Action to Task.Run:
+
+```
+Task.Run(someAction);
+```
+
+> that’s exactly equivalent to:
+
+```
+Task.Factory.StartNew(someAction, 
+    CancellationToken.None, TaskCreationOptions.DenyChildAttach, TaskScheduler.Default);
+```
+
