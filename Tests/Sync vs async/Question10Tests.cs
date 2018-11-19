@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
-using AsyncAwaitQuiz;
+using AsyncAwaitQuiz.Sync_vs_async;
 using NUnit.Framework;
 
-namespace Tests
+namespace Tests.Sync_vs_async
 {
-    public class Question11Tests
+    public class Question10Tests
     {
         /*
             The answer is C
@@ -38,7 +38,7 @@ namespace Tests
         [Test]
         public async Task Run()
         {
-            await Question11.RunAsync();
+            await Question10.RunAsync();
         }
     }
 }

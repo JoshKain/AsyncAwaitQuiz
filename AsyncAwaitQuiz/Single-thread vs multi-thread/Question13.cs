@@ -7,7 +7,18 @@ namespace AsyncAwaitQuiz
 {
     public static class Question13
     {
-        public static async Task RunAsync()
+        /*
+           Which of these methods has the fastest performance? Method1Async or Method2Async?
+           NOTE: You can assume the task returned by each method is awaited by the calling method.
+
+           A). Method1Async
+
+           B). Method2Async
+
+           C). They both have similar performance
+       */
+
+        public static async Task Method1Async()
         {
             Task operation1Task = Operation1Async();
             Task operation2Task = Operation2Async();
@@ -15,6 +26,13 @@ namespace AsyncAwaitQuiz
             await operation1Task;
             await operation2Task;
             await operation3Task;
+        }
+
+        public static async Task Method2Async()
+        {
+            await Operation1Async();
+            await Operation2Async();
+            await Operation3Async();
         }
 
         private static async Task Operation1Async()

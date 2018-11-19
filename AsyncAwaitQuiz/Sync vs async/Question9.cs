@@ -15,7 +15,9 @@ namespace AsyncAwaitQuiz.Sync_vs_async
            B).  Exception
                 This is a test exception
 
-           C). None of the above.
+           C). An uncaught exception is thrown and can be caught in the calling method
+
+           D). None of the above.
        */
 
 
@@ -87,6 +89,42 @@ namespace AsyncAwaitQuiz.Sync_vs_async
             }
         }
 
+        public static async void PartF()
+        {
+            await Operation1Async();
+        }
+
+        public static async Task PartG()
+        {
+            await Operation1Async();
+        }
+
+        public static async void PartH()
+        {
+            try
+            {
+                Task operation1Task = Operation1Async(); 
+                try
+                {
+                    await Operation1Async();
+                }
+                catch
+                {
+                    throw operation1Task.Exception;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.GetType().Name);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
+        public static void PartI()
+        {
+            Task operation1Task = Operation1Async();
+        }
 
         private static async Task Operation1Async()
         {

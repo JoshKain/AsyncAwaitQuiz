@@ -1,35 +1,30 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace AsyncAwaitQuiz
+namespace AsyncAwaitQuiz.Sync_vs_async
 {
-    public static class Question16
+    public static class Question12
     {
-        public static async Task RunAsync()
+        public static async Task Method1Async()
         {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            Task operation1AwaitTask1 = Operation1AwaitAsync();
-            Task operation1AwaitTask2 = Operation1AwaitAsync();
-            Task operation1AwaitTask3 = Operation1AwaitAsync();
-            await operation1AwaitTask1;
-            await operation1AwaitTask2;
-            await operation1AwaitTask3;
-            long awaitTime = stopwatch.ElapsedMilliseconds; 
-            stopwatch.Reset();
-
-            stopwatch.Start();
             Task operation1ResultTask1 = Operation1ResultAsync();
             Task operation1ResultTask2 = Operation1ResultAsync();
             Task operation1ResultTask3 = Operation1ResultAsync();
             await operation1ResultTask1;
             await operation1ResultTask2;
             await operation1ResultTask3;
-            long resultTime = stopwatch.ElapsedMilliseconds;
-            Console.WriteLine($"The difference in time with await is {resultTime - awaitTime}ms");
+        }
+
+        public static async Task Method2Async()
+        {
+            Task operation1AwaitTask1 = Operation1AwaitAsync();
+            Task operation1AwaitTask2 = Operation1AwaitAsync();
+            Task operation1AwaitTask3 = Operation1AwaitAsync();
+            await operation1AwaitTask1;
+            await operation1AwaitTask2;
+            await operation1AwaitTask3;
         }
 
         private static async Task Operation1AwaitAsync()

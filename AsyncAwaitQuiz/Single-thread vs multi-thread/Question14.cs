@@ -8,25 +8,32 @@ namespace AsyncAwaitQuiz
 {
     public static class Question14
     {
-        public static async Task RunAsync()
+        /*
+           Which of these methods has the fastest performance? Method1Async or Method2Async?
+           NOTE: You can assume the task returned by each method is awaited by the calling method.
+
+           A). Method1Async
+
+           B). Method2Async
+
+           C). They both have similar performance
+       */
+
+        public static void Method1()
         {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
             Operation1();
             Operation2();
             Operation3();
-            long singleThreadResult = stopwatch.ElapsedMilliseconds;
-            stopwatch.Reset();
+        }
 
-            stopwatch.Start();
+        public static async Task Method2Async()
+        {
             Task operation1ThreadTask = Task.Run(() => Operation1());
             Task operation2ThreadTask = Task.Run(() => Operation2());
             Task operation3ThreadTask = Task.Run(() => Operation3());
             await operation1ThreadTask;
             await operation2ThreadTask;
             await operation3ThreadTask;
-            long multiThreadResult = stopwatch.ElapsedMilliseconds;
-            Console.WriteLine($"The difference in time with multiple threads is {singleThreadResult - multiThreadResult}ms");
         }
 
         private static void Operation1()

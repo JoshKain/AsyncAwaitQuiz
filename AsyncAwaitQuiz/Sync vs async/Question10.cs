@@ -3,25 +3,23 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AsyncAwaitQuiz
+namespace AsyncAwaitQuiz.Sync_vs_async
 {
-    public static class Question12
+    public static class Question10
     {
         /*
            What will be the output of the RunAsync method? 
            NOTE: You can assume the task returned by this method is awaited by the calling method.
 
-           A). Test 2
-               Test 3
-               Test 2.5
+           A). Test 3
+               Test 2
                Test 1
                Test 1.5
 
-           B). Test 2
-               Test 2.5
-               Test 3
+           B). Test 3
                Test 1
                Test 1.5
+               Test 2
 
            C). Test 1
                Test 1.5
@@ -41,8 +39,9 @@ namespace AsyncAwaitQuiz
         public static async Task RunAsync()
         {
             Task operation1Task = Operation1Async();
-            await Operation2Async();
+            Task operation2Task = Operation2Async();
             Operation3();
+            await operation2Task;
             await operation1Task;
         }
 
