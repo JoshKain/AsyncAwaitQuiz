@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AsyncAwaitQuiz.Sync_vs_async
@@ -6,135 +8,63 @@ namespace AsyncAwaitQuiz.Sync_vs_async
     public static class Question9
     {
         /*
-           What will be the output of each of these methods? 
+           What will be the output of the RunAsync method? 
            NOTE: You can assume the task returned by this method is awaited by the calling method.
 
-           A).  AggregateException
-                One or more errors occurred. (This is a test exception)
+           A). Test 2
+               Test 3
+               Test 2.5
+               Test 1
+               Test 1.5
 
-           B).  Exception
-                This is a test exception
+           B). Test 2
+               Test 2.5
+               Test 3
+               Test 1
+               Test 1.5
 
-           C). An uncaught exception is thrown and can be caught in the calling method
+           C). Test 1
+               Test 1.5
+               Test 2
+               Test 3
+               Test 2.5
 
-           D). None of the above.
+           D). Test 1
+               Test 1.5
+               Test 2
+               Test 2.5
+               Test 3
+
+           E). None of the above.
        */
 
-
-        public static void PartA()
-        {
-            try
-            {
-                Operation1Async().Wait();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.GetType().Name);
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        public static void PartB()
-        {
-            try
-            {
-                Task.Run(async () =>
-                {
-                    await Operation1Async();
-                }).Wait();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.GetType().Name);
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        public static void PartC()
-        {
-            try
-            {
-                Operation1Async().GetAwaiter().GetResult();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.GetType().Name);
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        public static async Task PartD()
-        {
-            try
-            {
-                await Task.Run(Operation1Async);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.GetType().Name);
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        public static async Task PartE()
-        {
-            try
-            {
-                await Operation1Async();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.GetType().Name);
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        public static async void PartF()
-        {
-            await Operation1Async();
-        }
-
-        public static async Task PartG()
-        {
-            await Operation1Async();
-        }
-
-        public static async void PartH()
-        {
-            try
-            {
-                Task operation1Task = Operation1Async(); 
-                try
-                {
-                    await Operation1Async();
-                }
-                catch
-                {
-                    throw operation1Task.Exception;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.GetType().Name);
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-
-        public static void PartI()
+        public static async Task RunAsync()
         {
             Task operation1Task = Operation1Async();
-        }
-
-        private static async Task Operation1Async()
-        {
             await Operation2Async();
+            Operation3();
+            await operation1Task;
         }
 
-        private static Task Operation2Async()
+        private static Task Operation1Async()
         {
-            throw new Exception("This is a test exception");
+            Console.WriteLine("Test 1");
+            Thread.Sleep(5000);
+            Console.WriteLine("Test 1.5");
+            return Task.CompletedTask;
         }
 
+        private static async Task Operation2Async()
+        {
+            Console.WriteLine("Test 2");
+            HttpClient httpClient = new HttpClient();
+            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(new Uri("https://www.google.com"));
+            Console.WriteLine("Test 2.5");
+        }
+
+        private static void Operation3()
+        {
+            Console.WriteLine("Test 3");
+        }
     }
 }

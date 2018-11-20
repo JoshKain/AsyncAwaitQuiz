@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AsyncAwaitQuiz
 {
-    public static class Question14
+    public static class Question12
     {
         /*
            Which of these methods has the fastest performance? Method1Async or Method2Async?

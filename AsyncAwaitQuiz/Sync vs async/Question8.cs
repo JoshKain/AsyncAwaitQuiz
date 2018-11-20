@@ -11,10 +11,13 @@ namespace AsyncAwaitQuiz.Sync_vs_async
            What will be the output of the RunAsync method? 
            NOTE: You can assume the task returned by this method is awaited by the calling method.
 
-           A). Test 1
+           A). Test 3
+               Test 2
+               Test 1
                Test 1.5
 
-           B). Test 1
+           B). Test 3
+               Test 1
                Test 1.5
                Test 2
 
@@ -22,6 +25,7 @@ namespace AsyncAwaitQuiz.Sync_vs_async
                Test 1.5
                Test 2
                Test 3
+               Test 2.5
 
            D). Test 1
                Test 1.5
@@ -34,9 +38,11 @@ namespace AsyncAwaitQuiz.Sync_vs_async
 
         public static async Task RunAsync()
         {
-            await Operation1Async();
-            await Operation2Async();
+            Task operation1Task = Operation1Async();
+            Task operation2Task = Operation2Async();
             Operation3();
+            await operation2Task;
+            await operation1Task;
         }
 
         private static Task Operation1Async()

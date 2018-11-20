@@ -2,15 +2,14 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using AsyncAwaitQuiz;
-using AsyncAwaitQuiz.Sync_vs_async;
 using NUnit.Framework;
 
-namespace Tests.Sync_vs_async
+namespace Tests
 {
-    public class Question12Tests
+    public class Question11Tests
     {
         /*
-            The answer is B
+            The answer is A 
         */
 
         [Test]
@@ -19,13 +18,13 @@ namespace Tests.Sync_vs_async
             Stopwatch stopwatch1 = new Stopwatch();
             Stopwatch stopwatch2 = new Stopwatch();
             stopwatch1.Start();
-            await Question12.Method1Async();
+            await Question11.Method1Async();
             long method1Result = stopwatch1.ElapsedMilliseconds;
 
             stopwatch2.Start();
-            await Question12.Method2Async();
+            await Question11.Method2Async();
             long method2Result = stopwatch2.ElapsedMilliseconds;
-            Console.WriteLine($"Method2Async is {method1Result - method2Result}ms faster than Method1Async");
+            Console.WriteLine($"Method1Async is {method2Result - method1Result}ms faster than Method2Async");
         }
     }
 }

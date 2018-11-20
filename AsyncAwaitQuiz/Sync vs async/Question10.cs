@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace AsyncAwaitQuiz.Sync_vs_async
@@ -8,62 +8,51 @@ namespace AsyncAwaitQuiz.Sync_vs_async
     public static class Question10
     {
         /*
-           What will be the output of the RunAsync method? 
-           NOTE: You can assume the task returned by this method is awaited by the calling method.
+           Which of these methods has the fastest performance? Method1Async or Method2Async?
+           NOTE: You can assume the task returned by each method is awaited by the calling method.
 
-           A). Test 3
-               Test 2
-               Test 1
-               Test 1.5
+           A). Method1Async
 
-           B). Test 3
-               Test 1
-               Test 1.5
-               Test 2
+           B). Method2Async
 
-           C). Test 1
-               Test 1.5
-               Test 2
-               Test 3
-               Test 2.5
-
-           D). Test 1
-               Test 1.5
-               Test 2
-               Test 2.5
-               Test 3
-
-           E). None of the above.
+           C). They both have similar performance
        */
 
-        public static async Task RunAsync()
+        public static async Task Method1Async()
         {
-            Task operation1Task = Operation1Async();
-            Task operation2Task = Operation2Async();
-            Operation3();
-            await operation2Task;
-            await operation1Task;
+            Task operation1ResultTask1 = Operation1ResultAsync();
+            Task operation1ResultTask2 = Operation1ResultAsync();
+            Task operation1ResultTask3 = Operation1ResultAsync();
+            await operation1ResultTask1;
+            await operation1ResultTask2;
+            await operation1ResultTask3;
         }
 
-        private static Task Operation1Async()
+        public static async Task Method2Async()
+        {
+            Task operation1AwaitTask1 = Operation1AwaitAsync();
+            Task operation1AwaitTask2 = Operation1AwaitAsync();
+            Task operation1AwaitTask3 = Operation1AwaitAsync();
+            await operation1AwaitTask1;
+            await operation1AwaitTask2;
+            await operation1AwaitTask3;
+        }
+
+        private static async Task Operation1AwaitAsync()
         {
             Console.WriteLine("Test 1");
-            Thread.Sleep(5000);
+            HttpClient httpClient = new HttpClient();
+            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(new Uri("http://www.deelay.me/5000/http://www.bbc.com"));
+            Console.WriteLine("Test 1.5");
+        }
+
+        private static Task Operation1ResultAsync()
+        {
+            Console.WriteLine("Test 1");
+            HttpClient httpClient = new HttpClient();
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(new Uri("http://www.deelay.me/5000/https://www.bbc.com")).Result;
             Console.WriteLine("Test 1.5");
             return Task.CompletedTask;
-        }
-
-        private static async Task Operation2Async()
-        {
-            Console.WriteLine("Test 2");
-            HttpClient httpClient = new HttpClient();
-            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(new Uri("https://www.google.com"));
-            Console.WriteLine("Test 2.5");
-        }
-
-        private static void Operation3()
-        {
-            Console.WriteLine("Test 3");
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace AsyncAwaitQuiz
            C). They both have similar performance
        */
 
-        public static async Task Method1Async()
+        public static async Task Method1()
         {
             Task operation1Task = Operation1Async();
             Task operation2Task = Operation2Async();
@@ -30,9 +31,12 @@ namespace AsyncAwaitQuiz
 
         public static async Task Method2Async()
         {
-            await Operation1Async();
-            await Operation2Async();
-            await Operation3Async();
+            Task operation1Task = Task.Run(Operation1Async);
+            Task operation2Task = Task.Run(Operation2Async);
+            Task operation3Task = Task.Run(Operation3Async);
+            await operation1Task;
+            await operation2Task;
+            await operation3Task;
         }
 
         private static async Task Operation1Async()
