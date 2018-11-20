@@ -17,9 +17,9 @@ namespace Tests.Examples
         {
             await KitchenAnalogy.SingleAsynchronousThread();
         }
-
+        
         [Test]
-        public static async Task Test_MultipleSynchronousThreads()
+        public static void Test_MultipleSynchronousThreads()
         {
             KitchenAnalogy.MultipleSynchronousThreads();
         }
