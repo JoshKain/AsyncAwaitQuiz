@@ -18,7 +18,7 @@ namespace Tests
             Stopwatch stopwatch1 = new Stopwatch();
             Stopwatch stopwatch2 = new Stopwatch();
             stopwatch1.Start();
-            await Question13.Method1();
+            await Question13.Method1Async();
             long method1Result = stopwatch1.ElapsedMilliseconds;
 
             stopwatch2.Start();

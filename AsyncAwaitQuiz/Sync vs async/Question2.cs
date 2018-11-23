@@ -42,7 +42,8 @@ namespace AsyncAwaitQuiz.Sync_vs_async
         {
             Console.WriteLine("Test 2");
             HttpClient httpClient = new HttpClient();
-            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(new Uri("https://www.google.com"));
+            HttpResponseMessage httpResponseMessage = await httpClient
+                .GetAsync(new Uri("https://www.google.com"));
             Console.WriteLine("Test 2.5");
         }
 

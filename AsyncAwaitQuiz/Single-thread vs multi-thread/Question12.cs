@@ -12,7 +12,7 @@ namespace AsyncAwaitQuiz
            Which of these methods has the fastest performance? Method1Async or Method2Async?
            NOTE: You can assume the task returned by each method is awaited by the calling method.
 
-           A). Method1Async
+           A). Method1
 
            B). Method2Async
 
@@ -25,7 +25,6 @@ namespace AsyncAwaitQuiz
             Operation2();
             Operation3();
         }
-
         public static async Task Method2Async()
         {
             Task operation1ThreadTask = Task.Run(() => Operation1());
@@ -35,26 +34,17 @@ namespace AsyncAwaitQuiz
             await operation2ThreadTask;
             await operation3ThreadTask;
         }
-
         private static void Operation1()
         {
-            Console.WriteLine("Test 1");
             Thread.Sleep(5000);
-            Console.WriteLine("Test 1.5");
         }
-
         private static void Operation2()
         {
-            Console.WriteLine("Test 2");
             Thread.Sleep(5000);
-            Console.WriteLine("Test 2.5");
         }
-
         private static void Operation3()
         {
-            Console.WriteLine("Test 3");
             Thread.Sleep(5000);
-            Console.WriteLine("Test 3.5");
         }
     }
 }

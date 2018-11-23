@@ -27,7 +27,6 @@ namespace AsyncAwaitQuiz.Sync_vs_async
             await operation1ResultTask2;
             await operation1ResultTask3;
         }
-
         public static async Task Method2Async()
         {
             Task operation1AwaitTask1 = Operation1AwaitAsync();
@@ -37,21 +36,17 @@ namespace AsyncAwaitQuiz.Sync_vs_async
             await operation1AwaitTask2;
             await operation1AwaitTask3;
         }
-
         private static async Task Operation1AwaitAsync()
         {
-            Console.WriteLine("Test 1");
             HttpClient httpClient = new HttpClient();
-            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync(new Uri("http://www.deelay.me/5000/http://www.bbc.com"));
-            Console.WriteLine("Test 1.5");
+            HttpResponseMessage httpResponseMessage = await httpClient
+                .GetAsync(new Uri("http://www.deelay.me/5000/http://www.bbc.com"));
         }
-
         private static Task Operation1ResultAsync()
         {
-            Console.WriteLine("Test 1");
             HttpClient httpClient = new HttpClient();
-            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(new Uri("http://www.deelay.me/5000/https://www.bbc.com")).Result;
-            Console.WriteLine("Test 1.5");
+            HttpResponseMessage httpResponseMessage = httpClient
+                .GetAsync(new Uri("http://www.deelay.me/5000/https://www.bbc.com")).Result;
             return Task.CompletedTask;
         }
     }
