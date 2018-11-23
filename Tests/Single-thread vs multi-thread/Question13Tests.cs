@@ -9,7 +9,7 @@ namespace Tests
     public class Question13Tests
     {
         /*
-            The answer is A 
+            The answer is C
         */
 
         [Test]
@@ -18,13 +18,13 @@ namespace Tests
             Stopwatch stopwatch1 = new Stopwatch();
             Stopwatch stopwatch2 = new Stopwatch();
             stopwatch1.Start();
-            await Question13.Method1Async();
+            await Question13.Method1();
             long method1Result = stopwatch1.ElapsedMilliseconds;
 
             stopwatch2.Start();
             await Question13.Method2Async();
             long method2Result = stopwatch2.ElapsedMilliseconds;
-            Console.WriteLine($"Method1Async is {method2Result - method1Result}ms faster than Method2Async");
+            Console.WriteLine($"The difference in time between the two methods is {method1Result - method2Result}ms");
         }
     }
 }

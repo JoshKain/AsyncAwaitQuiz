@@ -27,10 +27,10 @@ namespace AsyncAwaitQuiz.Sync_vs_async
             E). None of the above.
         */
 
-        public static void Run()
+        public static async void Run()
         {
             Operation1();
-            Operation2Async().Wait();
+            await Operation2Async();
             Operation3();
         }
 

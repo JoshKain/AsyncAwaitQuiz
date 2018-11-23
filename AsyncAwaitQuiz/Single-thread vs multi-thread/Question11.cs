@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace AsyncAwaitQuiz
 {
-    public static class Question15
+    public static class Question11
     {
         /*
            Which of these methods has the fastest performance? Method1Async or Method2Async?
@@ -19,7 +18,7 @@ namespace AsyncAwaitQuiz
            C). They both have similar performance
        */
 
-        public static async Task Method1()
+        public static async Task Method1Async()
         {
             Task operation1Task = Operation1Async();
             Task operation2Task = Operation2Async();
@@ -31,12 +30,9 @@ namespace AsyncAwaitQuiz
 
         public static async Task Method2Async()
         {
-            Task operation1Task = Task.Run(Operation1Async);
-            Task operation2Task = Task.Run(Operation2Async);
-            Task operation3Task = Task.Run(Operation3Async);
-            await operation1Task;
-            await operation2Task;
-            await operation3Task;
+            await Operation1Async();
+            await Operation2Async();
+            await Operation3Async();
         }
 
         private static async Task Operation1Async()

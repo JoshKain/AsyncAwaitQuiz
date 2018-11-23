@@ -43,7 +43,6 @@ namespace AsyncAwaitQuiz.Examples
             Task<PreHeatedOven> preHeatOvenTask = Task.Run(PreHeatOvenAsync);
             Task<Dessert> prepareDessertTask = Task.Run(() => PrepareDessert());
             Task<GratedCheese> grateCheeseTask = Task.Run(() => GrateCheese());
-
             BoilingWater boilingWater = BoilWaterAsync().Result;
             CookedPasta cookedPasta = CookPasta(boilingWater);
             DrainedCookedPasta drainedCookedPasta = DrainPasta(cookedPasta);

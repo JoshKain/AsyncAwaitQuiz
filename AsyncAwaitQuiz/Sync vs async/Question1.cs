@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading;
+using System.Net.Http;
 
 namespace AsyncAwaitQuiz.Sync_vs_async
 {
@@ -10,15 +10,15 @@ namespace AsyncAwaitQuiz.Sync_vs_async
 
             A). Test 1
                 Test 2
+                Test 2.5
                 Test 3
 
             B). Test 1
                 Test 2
-                Test 2.5
-                Test 3
 
             C). Test 1
                 Test 2
+                Test 3
             
             D). None of the above. 
         */
@@ -38,7 +38,8 @@ namespace AsyncAwaitQuiz.Sync_vs_async
         private static void Operation2()
         {
             Console.WriteLine("Test 2");
-            Thread.Sleep(5000);
+            HttpClient httpClient = new HttpClient();
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(new Uri("https://www.google.com")).Result;
             Console.WriteLine("Test 2.5");
         }
 
