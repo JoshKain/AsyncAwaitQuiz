@@ -124,7 +124,7 @@ namespace AsyncAwaitQuiz.Sync_vs_async
 
         public static void PartI()
         {
-            Task operation1Task = Operation1Async();
+            Operation1Async();
         }
 
         private static async Task Operation1Async()

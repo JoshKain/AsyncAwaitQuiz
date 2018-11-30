@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Tests.Sync_vs_async
 {
-    [Ignore("Question not ready to be asked yet.")]
+    //[Ignore("Question not ready to be asked yet.")]
     public class Question14Tests
     {
         /*
@@ -98,8 +98,6 @@ namespace Tests.Sync_vs_async
         /*
             The answer is A
 
-            It will throw the following uncaught exception:
-
             AggregateException
             One or more errors occurred. (This is a test exception)
         */
@@ -119,5 +117,6 @@ namespace Tests.Sync_vs_async
         {
             Question14.PartI();
         }
+
     }
 }
