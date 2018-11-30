@@ -131,7 +131,6 @@ namespace AsyncAwaitQuiz.Sync_vs_async
         {
             await Operation2Async();
         }
-
         private static Task Operation2Async()
         {
             throw new Exception("This is a test exception");
