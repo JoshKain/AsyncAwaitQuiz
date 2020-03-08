@@ -20,20 +20,20 @@ namespace AsyncAwaitQuiz
 
         public static async Task Method1Async()
         {
-            Task task1 = Operation1Async();
-            Task task2 = Operation1Async();
-            Task task3 = Operation1Async();
+            Task task1 = GetWebpageAsync();
+            Task task2 = GetWebpageAsync();
+            Task task3 = GetWebpageAsync();
             await task1;
             await task2;
             await task3;
         }
         public static async Task Method2Async()
         {
-            await Operation1Async();
-            await Operation1Async();
-            await Operation1Async();
+            await GetWebpageAsync();
+            await GetWebpageAsync();
+            await GetWebpageAsync();
         }
-        private static async Task Operation1Async()
+        private static async Task GetWebpageAsync()
         {
             HttpClient httpClient = new HttpClient();
             HttpResponseMessage httpResponseMessage = await httpClient
