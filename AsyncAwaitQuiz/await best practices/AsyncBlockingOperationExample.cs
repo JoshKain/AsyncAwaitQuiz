@@ -38,6 +38,7 @@ namespace AsyncAwaitQuiz.Examples
         }
         private Task DoSomeIoStuffAsync()
         {
+            // An HTTP request which takes 5 seconds.
             HttpClient httpClient = new HttpClient();
             return httpClient.GetAsync(
                 new Uri("http://www.deelay.me/5000/http://www.bbc.com"));
