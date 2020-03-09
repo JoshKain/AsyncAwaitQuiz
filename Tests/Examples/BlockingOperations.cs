@@ -7,15 +7,21 @@ namespace Tests.Examples
     public class BlockingOperationsTests
     {
         [Test]
-        public static void Test_Operation()
+        public static async Task Test_Operation1Async()
         {
-            new BlockingOperations().Operation();
+            await new AsyncBlockingOperationExample().Operation1Async();
         }
 
         [Test]
-        public static async Task Test_OperationAsync()
+        public static async Task Test_Operation2Async()
         {
-            await new BlockingOperations().OperationAsync();
+            await new AsyncBlockingOperationExample().Operation2Async();
+        }
+
+        [Test]
+        public static async Task Test_Operation3Async()
+        {
+            await new AsyncBlockingOperationExample().Operation3Async();
         }
     }
 }
