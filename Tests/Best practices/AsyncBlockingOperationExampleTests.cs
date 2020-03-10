@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
+using AsyncAwaitQuiz.Best_practices;
 using AsyncAwaitQuiz.Examples;
 using NUnit.Framework;
 
-namespace Tests.Examples
+namespace Tests.Best_practices
 {
     public class BlockingOperationsTests
     {

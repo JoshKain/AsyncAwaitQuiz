@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace AsyncAwaitQuiz.Examples
+namespace AsyncAwaitQuiz.Best_practices
 {
     // In this example we show methods which do some IO stuff and CPU stuff.
     // Operation1Async is bad as it does waits for all the I/O stuff, then does all the CPU stuff. 
