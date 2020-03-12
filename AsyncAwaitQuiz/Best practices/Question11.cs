@@ -33,10 +33,10 @@ namespace AsyncAwaitQuiz
             await GetWebpageAsync();
             await GetWebpageAsync();
         }
-        private static async Task GetWebpageAsync()
+        private static Task GetWebpageAsync()
         {
             HttpClient httpClient = new HttpClient();
-            HttpResponseMessage httpResponseMessage = await httpClient
+            return httpClient
                 .GetAsync(new Uri("http://www.deelay.me/5000/https://www.bbc.com"));
         }
     }
